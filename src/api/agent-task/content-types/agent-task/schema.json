@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agent_tasks",
+  "info": {
+    "singularName": "agent-task",
+    "pluralName": "agent-tasks",
+    "displayName": "Agent Tasks",
+    "description": "A unit of agent work: a headquarters orchestration or a delegated step run by one agent."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 160
+    },
+    "input": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "queued",
+      "enum": [
+        "queued",
+        "running",
+        "completed",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "progress": {
+      "type": "integer",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    },
+    "activity": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "output": {
+      "type": "text"
+    },
+    "error": {
+      "type": "text"
+    },
+    "plan": {
+      "type": "json"
+    },
+    "usage": {
+      "type": "json"
+    },
+    "stepId": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "jobRunId": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "cancelRequested": {
+      "type": "boolean",
+      "default": false
+    },
+    "paused": {
+      "type": "boolean",
+      "default": false
+    },
+    "progressCleared": {
+      "type": "boolean",
+      "default": false
+    },
+    "startedAt": {
+      "type": "datetime"
+    },
+    "finishedAt": {
+      "type": "datetime"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    },
+    "conversation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::conversation.conversation"
+    }
+  }
+}

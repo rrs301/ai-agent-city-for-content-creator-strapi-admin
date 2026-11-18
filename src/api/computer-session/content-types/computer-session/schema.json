@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "computer_sessions",
+  "info": {
+    "singularName": "computer-session",
+    "pluralName": "computer-sessions",
+    "displayName": "Computer Sessions",
+    "description": "The CloudHike cloud computer of one Creator City headquarters: its state and which agent is using it right now. One record per headquarters."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "computerId": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "state": {
+      "type": "enumeration",
+      "required": true,
+      "default": "stopped",
+      "enum": ["stopped", "starting", "running", "stopping", "error"]
+    },
+    "holderRun": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "holderAgent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "holderTask": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    },
+    "holderSince": {
+      "type": "datetime"
+    },
+    "heartbeatAt": {
+      "type": "datetime"
+    },
+    "userActiveAt": {
+      "type": "datetime"
+    },
+    "activity": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "url": {
+      "type": "text"
+    },
+    "pageTitle": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "error": {
+      "type": "text"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    }
+  }
+}

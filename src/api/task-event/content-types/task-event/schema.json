@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_events",
+  "info": {
+    "singularName": "task-event",
+    "pluralName": "task-events",
+    "displayName": "Task Events",
+    "description": "Execution history: one step of an agent run (tool call, delegation, status change)."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "started",
+        "tool_call",
+        "tool_output",
+        "delegated",
+        "message",
+        "progress",
+        "completed",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "data": {
+      "type": "json"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    }
+  }
+}

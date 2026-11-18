@@ -1,0 +1,114 @@
+{
+  "kind": "collectionType",
+  "collectionName": "connected_accounts",
+  "info": {
+    "singularName": "connected-account",
+    "pluralName": "connected-accounts",
+    "displayName": "Connected Accounts",
+    "description": "External accounts (Instagram, YouTube, LinkedIn, Notion\u2026) a Creator City user connected through Composio, with which of their agents may use each one and how. Tokens stay in Composio; this keeps the link (composioAccountId), its status, and the access settings. Always scoped to one headquarters and its owner."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "toolkit": {
+      "type": "string",
+      "required": true,
+      "maxLength": 80
+    },
+    "toolkitName": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "logo": {
+      "type": "text"
+    },
+    "composioAccountId": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 120
+    },
+    "composioUserId": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120
+    },
+    "authConfigId": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "initiated",
+      "enum": [
+        "initiated",
+        "active",
+        "failed",
+        "expired",
+        "disabled",
+        "revoked"
+      ]
+    },
+    "statusReason": {
+      "type": "text"
+    },
+    "accountLabel": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "permission": {
+      "type": "enumeration",
+      "required": true,
+      "default": "publish",
+      "enum": [
+        "read",
+        "publish"
+      ]
+    },
+    "agentAccess": {
+      "type": "enumeration",
+      "required": true,
+      "default": "all",
+      "enum": [
+        "all",
+        "selected"
+      ]
+    },
+    "allowedAgents": {
+      "type": "json"
+    },
+    "requireApproval": {
+      "type": "boolean",
+      "default": true
+    },
+    "connectedAt": {
+      "type": "datetime"
+    },
+    "lastSyncedAt": {
+      "type": "datetime"
+    },
+    "replacesId": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "stats": {
+      "type": "json"
+    },
+    "statsAt": {
+      "type": "datetime"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

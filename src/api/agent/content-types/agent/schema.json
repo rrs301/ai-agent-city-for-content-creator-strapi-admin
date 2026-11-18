@@ -1,0 +1,167 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agents",
+  "info": {
+    "singularName": "agent",
+    "pluralName": "agents",
+    "displayName": "Agents",
+    "description": "An AI agent and its office building in a user's city."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 32
+    },
+    "instructions": {
+      "type": "text",
+      "required": true,
+      "maxLength": 2000
+    },
+    "role": {
+      "type": "enumeration",
+      "required": true,
+      "default": "custom",
+      "enum": [
+        "research",
+        "script",
+        "voice",
+        "media",
+        "editor",
+        "publisher",
+        "custom"
+      ]
+    },
+    "model": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "tools": {
+      "type": "json"
+    },
+    "settings": {
+      "type": "json"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "status": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "idle",
+        "working",
+        "waiting",
+        "completed",
+        "failed",
+        "error",
+        "offline"
+      ],
+      "default": "idle"
+    },
+    "progress": {
+      "type": "integer",
+      "min": 0,
+      "max": 100
+    },
+    "activity": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "design": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "studio",
+        "observatory",
+        "broadcast",
+        "gallery",
+        "cinema",
+        "dispatch"
+      ],
+      "default": "studio"
+    },
+    "theme": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "lavender",
+        "mint",
+        "peach",
+        "sky",
+        "rose",
+        "white"
+      ],
+      "default": "lavender"
+    },
+    "icon": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "search",
+        "doc",
+        "wave",
+        "play",
+        "image",
+        "rocket",
+        "sparkle"
+      ],
+      "default": "sparkle"
+    },
+    "floors": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 4,
+      "default": 1
+    },
+    "glass": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "full",
+        "front",
+        "none"
+      ],
+      "default": "full"
+    },
+    "interior": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "desk",
+        "writer",
+        "voice",
+        "editing",
+        "gallery",
+        "publish"
+      ],
+      "default": "desk"
+    },
+    "roof": {
+      "type": "json"
+    },
+    "trees": {
+      "type": "boolean",
+      "default": true
+    },
+    "x": {
+      "type": "integer",
+      "required": true
+    },
+    "y": {
+      "type": "integer",
+      "required": true
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    }
+  }
+}

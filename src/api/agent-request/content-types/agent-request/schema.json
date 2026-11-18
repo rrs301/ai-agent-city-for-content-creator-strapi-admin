@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agent_requests",
+  "info": {
+    "singularName": "agent-request",
+    "pluralName": "agent-requests",
+    "displayName": "Agent Requests",
+    "description": "Things a Creator City agent needs from its user while it works: sign in on the cloud computer, solve a captcha, do a manual step, choose an option or answer a question, approve an action, or connect an external account through Composio (generative UI). The agent waits until the request is resolved. Always scoped to one headquarters."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "kind": {
+      "type": "enumeration",
+      "required": true,
+      "default": "action",
+      "enum": [
+        "login",
+        "captcha",
+        "action",
+        "choice",
+        "confirm",
+        "connect"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "pending",
+      "enum": [
+        "pending",
+        "resolved",
+        "cancelled",
+        "expired"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 160
+    },
+    "message": {
+      "type": "text"
+    },
+    "url": {
+      "type": "text"
+    },
+    "service": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "capability": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "options": {
+      "type": "json"
+    },
+    "allowOther": {
+      "type": "boolean",
+      "default": false
+    },
+    "response": {
+      "type": "json"
+    },
+    "resolvedAt": {
+      "type": "datetime"
+    },
+    "expiresAt": {
+      "type": "datetime"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_messages",
+  "info": {
+    "singularName": "chat-message",
+    "pluralName": "chat-messages",
+    "displayName": "Chat Messages",
+    "description": "One message in a conversation."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "role": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "user",
+        "assistant",
+        "system"
+      ]
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "conversation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::conversation.conversation"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    }
+  }
+}

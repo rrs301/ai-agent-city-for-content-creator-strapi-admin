@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "external_waits",
+  "info": {
+    "singularName": "external-wait",
+    "pluralName": "external-waits",
+    "displayName": "External Waits",
+    "description": "A Creator City agent run that paused while a website works on something for a long time (for example Claude building a video). A CloudHike Jobs schedule checks the page every few minutes with the cloud computer and resumes the task when it is ready. Always scoped to one headquarters."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "waiting",
+      "enum": ["waiting", "resuming", "done", "cancelled"]
+    },
+    "title": { "type": "string", "required": true, "maxLength": 160 },
+    "url": { "type": "text", "required": true },
+    "readyText": { "type": "string", "maxLength": 200 },
+    "busyText": { "type": "string", "maxLength": 200 },
+    "next": { "type": "text", "required": true },
+    "outcome": {
+      "type": "enumeration",
+      "enum": ["ready", "timeout", "signin"]
+    },
+    "intervalSeconds": { "type": "integer", "default": 300 },
+    "nextCheckAt": { "type": "datetime", "required": true },
+    "deadlineAt": { "type": "datetime", "required": true },
+    "lastCheckAt": { "type": "datetime" },
+    "checks": { "type": "integer", "default": 0 },
+    "lastResult": { "type": "string", "maxLength": 300 },
+    "headquarter": { "type": "relation", "relation": "manyToOne", "target": "api::headquarter.headquarter" },
+    "agent": { "type": "relation", "relation": "manyToOne", "target": "api::agent.agent" },
+    "task": { "type": "relation", "relation": "manyToOne", "target": "api::agent-task.agent-task" },
+    "rootTask": { "type": "relation", "relation": "manyToOne", "target": "api::agent-task.agent-task" }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artifacts",
+  "info": {
+    "singularName": "artifact",
+    "pluralName": "artifacts",
+    "displayName": "Artifacts",
+    "description": "Deliverables Creator City agents produce (scripts, topic lists, research briefs, images, voiceovers, video timelines, publishing packages), shown on the Artifacts page. Always scoped to one headquarters."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 160
+    },
+    "type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "document",
+      "enum": [
+        "document",
+        "image",
+        "audio",
+        "video"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "required": true,
+      "default": "other",
+      "enum": [
+        "script",
+        "research",
+        "topics",
+        "outline",
+        "copy",
+        "publication",
+        "timeline",
+        "image",
+        "voiceover",
+        "upload",
+        "other"
+      ]
+    },
+    "mimeType": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "content": {
+      "type": "text"
+    },
+    "url": {
+      "type": "text"
+    },
+    "data": {
+      "type": "json"
+    },
+    "memoryId": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "mediaAsset": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::media-asset.media-asset"
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    }
+  }
+}

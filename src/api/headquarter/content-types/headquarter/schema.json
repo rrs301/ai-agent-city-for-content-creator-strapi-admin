@@ -1,0 +1,121 @@
+{
+  "kind": "collectionType",
+  "collectionName": "headquarters",
+  "info": {
+    "singularName": "headquarter",
+    "pluralName": "headquarters",
+    "displayName": "Headquarters"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 32
+    },
+    "style": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "empire",
+        "crown",
+        "twin"
+      ],
+      "default": "empire"
+    },
+    "theme": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "lavender",
+        "mint",
+        "peach",
+        "sky",
+        "rose",
+        "white",
+        "gold"
+      ],
+      "default": "gold"
+    },
+    "height": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 5,
+      "default": 2
+    },
+    "tint": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "blue",
+        "teal",
+        "warm",
+        "clear"
+      ],
+      "default": "warm"
+    },
+    "icon": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "search",
+        "doc",
+        "wave",
+        "play",
+        "image",
+        "rocket",
+        "sparkle"
+      ],
+      "default": "sparkle"
+    },
+    "spire": {
+      "type": "boolean",
+      "default": true
+    },
+    "trees": {
+      "type": "boolean",
+      "default": true
+    },
+    "agentsSeeded": {
+      "type": "boolean",
+      "default": false
+    },
+    "x": {
+      "type": "integer"
+    },
+    "y": {
+      "type": "integer"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "orchestrator": {
+      "type": "json"
+    },
+    "displayName": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "timeZone": {
+      "type": "string",
+      "maxLength": 64
+    },
+    "agentDefaults": {
+      "type": "json"
+    },
+    "publishingApproval": {
+      "type": "enumeration",
+      "enum": [
+        "ask",
+        "auto"
+      ],
+      "default": "ask"
+    }
+  }
+}

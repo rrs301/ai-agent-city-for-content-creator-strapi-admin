@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_posts",
+  "info": {
+    "singularName": "social-post",
+    "pluralName": "social-posts",
+    "displayName": "Social Posts",
+    "description": "Posts Creator City agents drafted, scheduled, or published on a connected account through Composio. A draft holds the post text and media and, once prepared, the Composio tool and arguments that publish it; the user schedules or publishes drafts from the Post and Calendar pages. A scheduled post runs that tool at publishAt. Always scoped to one headquarters."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "toolkit": {
+      "type": "string",
+      "required": true,
+      "maxLength": 80
+    },
+    "toolSlug": {
+      "type": "string",
+      "required": false,
+      "maxLength": 160
+    },
+    "toolVersion": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "arguments": {
+      "type": "json"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "summary": {
+      "type": "text"
+    },
+    "content": {
+      "type": "text"
+    },
+    "media": {
+      "type": "json"
+    },
+    "status": {
+      "type": "enumeration",
+      "required": true,
+      "default": "draft",
+      "enum": [
+        "draft",
+        "scheduled",
+        "publishing",
+        "published",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "publishAt": {
+      "type": "datetime"
+    },
+    "publishedAt": {
+      "type": "datetime"
+    },
+    "url": {
+      "type": "text"
+    },
+    "result": {
+      "type": "json"
+    },
+    "error": {
+      "type": "text"
+    },
+    "userScheduled": {
+      "type": "boolean",
+      "default": false
+    },
+    "headquarter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::headquarter.headquarter"
+    },
+    "connectedAccount": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::connected-account.connected-account"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent-task.agent-task"
+    },
+    "artifact": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::artifact.artifact"
+    }
+  }
+}
